@@ -1,112 +1,44 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
-import ProductCard from './components/ProductCard'
-import AnimatedSection from './components/AnimatedSection'
+/* Import Tailwind via CDN */
+@import url('https://cdn.tailwindcss.com');
 
-function App() {
-  const products = [
-    {
-      id: 1,
-      name: "Nike Air Max 270",
-      price: "$129.99",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
-      description: "Premium running shoes with air cushioning"
-    },
-    {
-      id: 2,
-      name: "Adidas Ultraboost 21",
-      price: "$149.99",
-      image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&h=500&fit=crop",
-      description: "Boost technology for maximum comfort"
-    },
-    {
-      id: 3,
-      name: "Puma RS-X Turbo",
-      price: "$119.99",
-      image: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&h=500&fit=crop",
-      description: "Retro style with modern comfort"
-    },
-    {
-      id: 4,
-      name: "Jordan Air 1",
-      price: "$159.99",
-      image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&h=500&fit=crop",
-      description: "Classic basketball iconic design"
-    },
-    {
-      id: 5,
-      name: "New Balance 574",
-      price: "$89.99",
-      image: "https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=500&h=500&fit=crop",
-      description: "Everyday comfort and style"
-    },
-    {
-      id: 6,
-      name: "Converse Chuck 70",
-      price: "$79.99",
-      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=500&fit=crop",
-      description: "Timeless classic canvas sneakers"
-    }
-  ]
+/* Custom styles */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <Navbar />
-      <Hero />
-      
-      {/* Featured Products */}
-      <AnimatedSection>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-              Featured Collection
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our premium selection of athletic and lifestyle footwear designed for comfort and style.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* Features Section */}
-      <AnimatedSection>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="p-6">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-shipping-fast text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Free Shipping</h3>
-              <p className="text-gray-600">Free delivery on all orders over $99</p>
-            </div>
-            <div className="p-6">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-shield-alt text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">2-Year Warranty</h3>
-              <p className="text-gray-600">Quality guaranteed with extended warranty</p>
-            </div>
-            <div className="p-6">
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-headset text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">24/7 Support</h3>
-              <p className="text-gray-600">Round-the-clock customer service</p>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <Footer />
-    </div>
-  )
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-export default App
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
